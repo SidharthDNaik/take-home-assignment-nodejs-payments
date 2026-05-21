@@ -10,6 +10,13 @@ A small read-only reporting API for commission activity and allocations, backed 
 
 # Running locally
 
+## Get the code
+Pull down the repo and make sure you have the takehome branch changes
+
+https://github.com/SidharthDNaik/take-home-assignment-nodejs-payments.git
+
+git pull origin takehome
+
 ## Start PostgreSQL with seed data
 docker compose up -d
 
