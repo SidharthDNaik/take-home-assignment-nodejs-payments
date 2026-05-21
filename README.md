@@ -87,6 +87,11 @@ Cursor is derived from the last row in the page using `(close_date, id)` with or
 }
 ```
 
+**Example Query**
+```
+http://localhost:3000/api/v1/commissions/details?team_id=a1a1a1a1-0000-4000-8000-000000000001&status=finalized&after=2025-01-01&before=2025-04-31&limit=5
+```
+
 ---
 
 ### 2) GET `/api/v1/commissions/summary`
@@ -141,6 +146,12 @@ Returns aggregate totals for a period, optionally scoped to a team. This endpoin
         }
     }
 }
+```
+
+
+**Example Query**
+```
+http://localhost:3000/api/v1/commissions/summary?after=2025-02-01&before=2025-02-29
 ```
 
 **Zero-data behavior**
