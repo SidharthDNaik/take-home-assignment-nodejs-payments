@@ -8,21 +8,21 @@ A small read-only reporting API for commission activity and allocations, backed 
 
 ---
 
-## Running locally
+# Running locally
 
-# Start PostgreSQL with seed data
+## Start PostgreSQL with seed data
 docker compose up -d
 
-# Install dependencies
+## Install dependencies
 npm install
 
-# Start the dev server
+## Start the dev server
 npm run dev
 
-# Run tests
+## Run tests
 npm test
 
-> If you use a separate test database/container, ensure the integration test command points at it via `PGHOST/PGPORT/PGUSER/PGPASSWORD/PGDATABASE`.
+If you use a separate test database/container, ensure the integration test command points at it via `PGHOST/PGPORT/PGUSER/PGPASSWORD/PGDATABASE`.
 
 ---
 
@@ -174,17 +174,23 @@ All monetary values are stored and computed in integer cents (`BIGINT`). The API
 If this were productionized, these indexes would help the common query patterns:
 
 -- Details endpoint filters + ordering
+
+```
 CREATE INDEX IF NOT EXISTS commissions_team_status_close_date_id_idx
 ON commissions (team_id, status, close_date DESC, id DESC);
+```
 
 -- Summary endpoint filters
+```
 CREATE INDEX IF NOT EXISTS commissions_close_date_team_idx
 ON commissions (close_date, team_id);
+```
 
 -- Allocation lookup by commission_id
+```
 CREATE INDEX IF NOT EXISTS allocations_commission_id_idx
 ON allocations (commission_id);
-
+```
 ---
 
 ## Testing strategy
